@@ -67,6 +67,10 @@ const originalCodeBlocks = [
 let codeBlocks = JSON.parse(JSON.stringify(originalCodeBlocks));
 let mentorId = null; // Variable to keep track of the mentor's socket ID
 
+app.get('/', (req, res) => {
+    res.send('Hello, World!');
+});
+
 app.get('/codeblocks', (req, res) => {
     res.json(codeBlocks);
 });
