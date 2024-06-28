@@ -23,7 +23,7 @@ const Lobby = () => {
   const [codeBlocks, setCodeBlocks] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:4000/codeblocks') // Fetch code blocks from the server
+    fetch('https://js-mentor.onrender.com/codeblocks') // Fetch code blocks from the server
         .then((response) => response.json())
         .then((data) => setCodeBlocks(data)); // Set the code blocks state
   }, []);
