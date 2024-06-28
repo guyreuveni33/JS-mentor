@@ -13,11 +13,6 @@ const io = socketIo(server, {
 
 app.use(cors());
 
-// Add a simple root endpoint for testing
-app.get('/api', (req, res) => {
-    res.send('API is running');
-});
-
 // Initial set of code blocks with their solutions
 const originalCodeBlocks = [
     {
@@ -72,41 +67,45 @@ const originalCodeBlocks = [
 let codeBlocks = JSON.parse(JSON.stringify(originalCodeBlocks));
 let mentorId = null; // Variable to keep track of the mentor's socket ID
 
-app.get('/api/codeblocks', (req, res) => {
-    console.log('GET /api/codeblocks'); // Add logging
+app.get('/codeblocks', (req, res) => {
     res.json(codeBlocks);
 });
 
 io.on('connection', (socket) => {
-    console.log('New connection'); // Add logging
-
     // When a client connects
     socket.on('joinCodeBlock', (codeBlockIndex) => {
-        console.log('joinCodeBlock', codeBlockIndex); // Add logging
         socket.join(`codeBlock-${codeBlockIndex}`); // Join a specific room based on code block index
 
         if (!mentorId) {
             mentorId = socket.id; // Assign the first user as mentor
         }
 
-        let isMentor = socket.id === mentorId;
+        // const isMentor = (socket.id === mentorId); // Determine if the user is the mentor
+        let isMentor;
+        if (socket.id === mentorId) {
+            isMentor = true;
+        } else {
+            isMentor = false;
+        }
+
         const codeBlockData = { ...codeBlocks[codeBlockIndex], isMentor }; // Include mentor status in data
         socket.emit('codeBlockData', codeBlockData);
     });
 
     socket.on('codeChange', ({ id, newCode }) => {
-        console.log('codeChange', id, newCode); // Add logging
-
         const normalizedNewCode = normalizeCode(newCode);
         const normalizedSolution = normalizeCode(codeBlocks[id].solution);
-        let isCorrect = normalizedNewCode === normalizedSolution;
+        let isCorrect;
+        if (normalizedNewCode === normalizedSolution) {
+            isCorrect = true;
+        } else {
+            isCorrect = false;
+        }
         codeBlocks[id].code = newCode; // Update the code block with new code
         io.to(`codeBlock-${id}`).emit('codeUpdate', { newCode, isCorrect }); // Notify all clients in the room
     });
 
     socket.on('disconnect', () => {
-        console.log('disconnect'); // Add logging
-
         if (socket.id === mentorId) {
             mentorId = null;
         }
@@ -124,5 +123,4 @@ const normalizeCode = (code) => {
 };
 
 server.listen(4000, () => {
-    console.log('Server is running on port 4000');
 });
