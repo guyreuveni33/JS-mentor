@@ -6,7 +6,7 @@ import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css';
 import './App.css';
 
-const socket = io('http://localhost:4000'); // Connect to the server
+const socket = io('https://vercel.com/nivs-projects-35681ef1/js-mentor-server.vercel.app'); // Connect to the server
 
 const App = () => {
   return (
@@ -23,7 +23,7 @@ const Lobby = () => {
   const [codeBlocks, setCodeBlocks] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:4000/codeblocks') // Fetch code blocks from the server
+    fetch('https://vercel.com/nivs-projects-35681ef1/js-mentor-server.vercel.app/api/codeblocks') // Fetch code blocks from the server
         .then((response) => response.json())
         .then((data) => setCodeBlocks(data)); // Set the code blocks state
   }, []);
