@@ -13,6 +13,10 @@ const io = socketIo(server, {
 
 app.use(cors());
 
+app.get('/', (req, res) => {
+    res.json('Hello, World');
+});
+
 // Initial set of code blocks with their solutions
 const originalCodeBlocks = [
     {
