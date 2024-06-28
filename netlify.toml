@@ -2,11 +2,11 @@
 command = "npm run build"
 publish = "client/build"
 
+[functions]
+directory = "server/src"
+
 [[plugins]]
 package = "@netlify/plugin-functions-install-core"
-
-[functions]
-directory = "server"
 
 [[redirects]]
 from = "/api/*"
