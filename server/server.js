@@ -1,4 +1,5 @@
 const express = require('express');
+const serverless = require('serverless-http');
 const http = require('http');
 const socketIo = require('socket.io');
 const cors = require('cors');
@@ -122,5 +123,4 @@ const normalizeCode = (code) => {
     return normalizedCode;
 };
 
-server.listen(4000, () => {
-});
+module.exports.handler = serverless(app);
