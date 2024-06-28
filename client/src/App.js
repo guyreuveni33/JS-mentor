@@ -6,7 +6,7 @@ import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css';
 import './App.css';
 
-const serverUrl = '/api'; // Netlify Functions endpoint
+const serverUrl = '/.netlify/functions/server'; // Update to use the full Netlify Functions URL
 
 const socket = io(serverUrl); // Connect to the server
 
@@ -25,7 +25,7 @@ const Lobby = () => {
     const [codeBlocks, setCodeBlocks] = useState([]);
 
     useEffect(() => {
-        fetch(`${serverUrl}/codeblocks`) // Fetch code blocks from the server
+        fetch(`${serverUrl}/api/codeblocks`) // Fetch code blocks from the server
             .then((response) => response.json())
             .then((data) => setCodeBlocks(data)) // Set the code blocks state
             .catch(error => console.error('Error fetching code blocks:', error));
