@@ -1,5 +1,4 @@
 const express = require('express');
-const serverless = require('serverless-http');
 const http = require('http');
 const socketIo = require('socket.io');
 const cors = require('cors');
@@ -68,7 +67,7 @@ const originalCodeBlocks = [
 let codeBlocks = JSON.parse(JSON.stringify(originalCodeBlocks));
 let mentorId = null; // Variable to keep track of the mentor's socket ID
 
-app.get('/api/codeblocks', (req, res) => {
+app.get('/codeblocks', (req, res) => {
     res.json(codeBlocks);
 });
 
@@ -123,4 +122,5 @@ const normalizeCode = (code) => {
     return normalizedCode;
 };
 
-module.exports.handler = serverless(app);
+server.listen(4000, () => {
+});
