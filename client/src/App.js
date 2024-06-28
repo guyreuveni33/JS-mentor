@@ -6,7 +6,7 @@ import hljs from 'highlight.js';
 import 'highlight.js/styles/github.css';
 import './App.css';
 
-const socket = io('http://localhost:4000'); // Connect to the server
+const socket = io('https://js-mentor.onrender.com'); // Connect to the server
 
 const App = () => {
   return (

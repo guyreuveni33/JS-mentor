@@ -7,11 +7,19 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-        origin: "https://js-mentor.vercel.app",
+        origin: "https://js-mentor.vercel.app", // Replace with your client URL
+        methods: ["GET", "POST"],
+        credentials: true
     },
 });
 
-app.use(cors());
+app.use(cors({
+    origin: "https://js-mentor.vercel.app", // Replace with your client URL
+    methods: ["GET", "POST"],
+    credentials: true
+}));
+
+// app.use(cors());
 
 app.get('/', (req, res) => {
     res.json('Hello, World');
