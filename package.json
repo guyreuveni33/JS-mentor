@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "npm --prefix client run build"
+    "prebuild": "npm install --prefix client",
+    "build": "npm run build --prefix client"
   }
 }
