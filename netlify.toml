@@ -5,10 +5,7 @@ publish = "client/build"
 [functions]
 directory = "server/src"
 
-[[plugins]]
-package = "@netlify/plugin-functions-install-core"
-
 [[redirects]]
 from = "/api/*"
-to = "/.netlify/functions/:splat"
+to = "/.netlify/functions/server"
 status = 200
