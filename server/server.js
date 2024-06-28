@@ -14,8 +14,8 @@ const io = socketIo(server, {
 app.use(cors());
 
 // Add a simple root endpoint for testing
-app.get('/', (req, res) => {
-    res.send('Server is running');
+app.get('/api', (req, res) => {
+    res.send('API is running');
 });
 
 // Initial set of code blocks with their solutions
