@@ -22,7 +22,7 @@ app.use(cors({
 // app.use(cors());
 
 app.get('/', (req, res) => {
-    res.json('');
+    res.json();
 });
 
 // Initial set of code blocks with their solutions
