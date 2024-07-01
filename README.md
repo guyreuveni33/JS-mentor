@@ -19,7 +19,7 @@ JS Mentor is a web application designed to help mentors and students collaborate
 
 Clone the repository:
 
-- git clone https://github.com/your-username/js-mentor.git
+- git clone https://github.com/nivswisa11/js-mentor.git
 - cd js-mentor
 
 Install dependencies for the client:
