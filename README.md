@@ -8,7 +8,12 @@ JS Mentor is a web application designed to help mentors and students collaborate
 - Mentor and student roles with different permissions
 - Syntax highlighting and code editing with `react-simple-code-editor` and `highlight.js`
 
-## Getting Started
+## Deployed Application
+
+- You can use the deployed application at https://js-mentor.vercel.app
+- The server is deployed at https://js-mentor.onrender.com
+
+## Running Locally (Optional)
 
 ### Prerequisites
 
